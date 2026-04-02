@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Umer Abdullah - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #e0e7ff;
+            --text-dark: #111827;
+            --text-muted: #4b5563;
+            --bg-light: #f9fafb;
+            --border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.5;
+            background-color: #f3f4f6;
+            padding: 40px 0;
+        }
+
+        @media print {
+            @page {
+                margin: 0;
+            }
+
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+            }
+
+            .page {
+                box-shadow: none !important;
+                margin: 0 !important;
+                width: 210mm !important;
+                height: 297mm !important;
+                overflow: hidden;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+
+        .page {
+            background: white;
+            width: 210mm;
+            height: 297mm;
+            /* Fixed height for A4 */
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* Prevent overflow to second page */
+        }
+
+        .cv-header {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 22px 45px;
+            /* Reduced from 25px */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-content h1 {
+            font-size: 29px;
+            /* Reduced from 30px */
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 2px;
+            color: white;
+        }
+
+        .header-content h2 {
+            font-size: 14.5px;
+            /* Reduced from 15px */
+            font-weight: 500;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .profile-container {
+            width: 95px;
+            /* Reduced from 100px */
+            height: 95px;
+            border-radius: 13px;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cv-body {
+            display: grid;
+            grid-template-columns: 245px 1fr;
+            /* Reduced from 250px */
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            background-color: var(--bg-light);
+            padding: 22px 28px;
+            /* Reduced from 25px 30px */
+            border-right: 1px solid var(--border);
+        }
+
+        .main-content {
+            padding: 22px 32px;
+            /* Reduced from 25px 35px */
+        }
+
+        .section {
+            margin-bottom: 14px;
+            /* Reduced from 16px to fit 4th box */
+        }
+
+        .section-title {
+            font-size: 12.5px;
+            /* Reduced from 13px */
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 4px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Sidebar Elements */
+        .contact-item {
+            margin-bottom: 6px;
+            /* Further compressed */
+        }
+
+        .contact-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            margin-bottom: 0px;
+        }
+
+        .contact-value {
+            font-size: 12px;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .skill-group {
+            margin-bottom: 8px;
+            /* Compact */
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .skill-bar-bg {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* Main Content Elements */
+        .summary-text {
+            color: var(--text-muted);
+            font-size: 13px;
+            /* Smaller */
+            line-height: 1.4;
+            margin-bottom: 8px;
+            /* Compressed */
+        }
+
+        .project-item {
+            margin-bottom: 12px;
+            /* Compact */
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .project-title {
+            font-size: 14px;
+            /* Smaller */
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .project-tech {
+            font-size: 9px;
+            font-weight: 600;
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 1px 6px;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .project-desc {
+            font-size: 12px;
+            /* Smaller */
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* 2 columns for better aesthetics */
+            gap: 12px;
+        }
+
+        .service-item {
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+        }
+
+        .service-title {
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .service-desc {
+            font-size: 10px;
+            color: var(--text-muted);
+            line-height: 1.2;
+        }
+
+        /* Timeline Styling for Experience */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--primary-light);
+            margin-left: 5px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 2px solid white;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .timeline-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .timeline-date {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 10px;
+            font-size: 10px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .no-print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            transition: transform 0.2s;
+        }
+
+        .no-print-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .page {
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .cv-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+                gap: 20px;
+            }
+
+            .header-content h1 {
+                font-size: 24px;
+            }
+
+            .profile-container {
+                width: 110px;
+                height: 110px;
+                margin: 0 auto;
+            }
+
+            .cv-body {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                padding: 25px 20px;
+            }
+
+            .main-content {
+                padding: 25px 20px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-header,
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .no-print-btn {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <button class="no-print-btn no-print" onclick="window.print()">
+        <span>🖨️</span> Save as PDF
+    </button>
+
+    <div class="page">
+        <!-- Header -->
+        <header class="cv-header">
+            <div class="header-content">
+                <h1>UMER ABDULLAH</h1>
+                <h2>Full-Stack Developer & UI/UX Specialist</h2>
+            </div>
+            <div class="profile-container">
+                <img src="profile.jpeg" alt="Umer Abdullah"
+                    onerror="this.src='https://ui-avatars.com/api/?name=Umer+Abdullah&background=4f46e5&color=fff&size=200'">
+            </div>
+        </header>
+
+        <div class="cv-body">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <section class="section">
+                    <h3 class="section-title">Contact</h3>
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">umerabdullah813@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+92 315-1619900</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Address</div>
+                        <div class="contact-value">Multan, Pakistan</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">umer-abdullah-066986279</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">github.com/umerabdullah</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Core Skills</h3>
+
+                    <div class="skill-group">
+                        <div class="skill-name"><span>PHP / Laravel</span> <span>95%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>JavaScript / React</span> <span>95%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>MySQL / Database</span> <span>85%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>Node.js / Express</span> <span>88%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>Tailwind CSS</span> <span>90%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>UI/UX Design</span> <span>90%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>Python Basics</span> <span>75%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 75%;"></div>
+                        </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>WordPress Design</span> <span>85%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>Shopify Store Design</span> <span>88%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-group">
+                        <div class="skill-name"><span>Cyber Security</span> <span>82%</span></div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 82%;"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Languages</h3>
+                    <div class="contact-item">
+                        <div class="contact-value">English (Professional)</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-value">Urdu (Native)</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-value">Punjabi (Native)</div>
+                    </div>
+                </section>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <section class="section">
+                    <h3 class="section-title">Profile Summary</h3>
+                    <p class="summary-text">
+                        A dedicated Full-Stack Developer with over 6 months of intensive experience in building
+                        high-performance web solutions. Specialized in React and PHP-based ecosystems. I thrive on
+                        solving complex architectural problems and transforming innovative ideas into polished,
+                        user-centric digital realities.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Featured Projects</h3>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h4 class="project-title">Dynamic Hospital CMS</h4>
+                            <span class="project-tech">PHP • MySQL</span>
+                        </div>
+                        <p class="project-desc">Full-scale medical management system with patient records and booking
+                            capabilities. Streamlined hospital operations effectively.</p>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h4 class="project-title">BM-GROUP ERP Suite</h4>
+                            <span class="project-tech">PHP • ERP Architecture</span>
+                        </div>
+                        <p class="project-desc">Comprehensive ERP suite comprising Logistics, Solar, Decor, and
+                            Enterprises modules, optimizing cross-departmental workflows.</p>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h4 class="project-title">APEX-BATTLE-ARENA</h4>
+                            <span class="project-tech">PHP • MySQL • JS</span>
+                        </div>
+                        <p class="project-desc">Interactive Paintball arena website featuring a real-time booking system
+                            and integrated equipment showcase.</p>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h4 class="project-title">Courier Management System</h4>
+                            <span class="project-tech">React • Node.js</span>
+                        </div>
+                        <p class="project-desc">Automated logistics platform for tracking shipments and managing riders
+                            in real-time.</p>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h4 class="project-title">E-commerce Management</h4>
+                            <span class="project-tech">PHP • MySQL</span>
+                        </div>
+                        <p class="project-desc">Robust online store platform with product management, orders, and secure
+                            checkout integration.</p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Specializations</h3>
+                    <div class="service-grid">
+                        <div class="service-item">
+                            <div class="service-title">🌐 Web Development</div>
+                            <div class="service-desc">Building high-performance, SEO-optimized SPAs and scalable
+                                backends.</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-title">🎨 UI/UX Design</div>
+                            <div class="service-desc">Creating intuitive, accessible, and stunning user interfaces with
+                                a focus on experience.</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-title">💡 Technical Consulting</div>
+                            <div class="service-desc">Advising on architecture, tech stacks, and performance
+                                optimization.</div>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-title">🚀 Enterprise Solutions</div>
+                            <div class="service-desc">Designing and deploying custom ERP, CMS, and automated business
+                                systems.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Experience & Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="timeline-title">Full Stack Developer - HAT-TECH</h4>
+                                <span class="timeline-date">Multan</span>
+                            </div>
+                            <p class="project-desc">Professional experience in delivering enterprise-level solutions and
+                                maintaining complex codebases.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-header">
+                                <h4 class="timeline-title">Technical Training - PNY</h4>
+                                <span class="timeline-date">Certification</span>
+                            </div>
+                            <p class="project-desc">Intensive development bootcamp and certification in modern web
+                                technologies.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer class="footer-note">
+            © 2026 Umer Abdullah • Generated from Personal Portfolio Project
+        </footer>
+    </div>
+
+</body>
+
+</html>
