@@ -16,11 +16,11 @@ export default function Portfolio() {
     { name: "Next.js", level: 80, color: "from-gray-100 to-gray-400" },
     { name: "Tailwind CSS", level: 90, color: "from-sky-400 to-sky-600" },
     { name: "PHP", level: 95, color: "from-indigo-400 to-indigo-600" },
+    { name: "Laravel", level: 90, color: "from-red-500 to-red-700" },
     { name: "MySQL", level: 85, color: "from-blue-400 to-blue-600" },
     { name: "Python", level: 75, color: "from-blue-500 to-indigo-700" },
     { name: "UI/UX Design", level: 90, color: "from-rose-500 to-pink-600" },
     { name: "WordPress Designs & Plugin", level: 85, color: "from-blue-600 to-indigo-800" },
-    { name: "Shopify Store Design", level: 88, color: "from-lime-500 to-green-700" },
     { name: "Cyber Security", level: 82, color: "from-red-600 to-orange-700" },
   ];
 
@@ -33,38 +33,24 @@ export default function Portfolio() {
       image: "hero.png"
     },
     {
-      title: "IBFAL Business System",
-      desc: "A custom-built enterprise solution designed to streamline business operations and internal workflows.",
-      tech: ["PHP", "MySQL", "JavaScript"],
-      link: "#",
-      image: "hero.png"
-    },
-    {
       title: "BM-GROUP OF COMPANY ERP",
       desc: "Comprehensive ERP suite comprising Logistic, Solar, Decor, and Enterprises ERP modules.",
       tech: ["PHP", "MySQL", "ERP Architecture"],
-      link: "#",
+      link: "https://bm-groupofcompanies.com/",
       image: "hero.png"
     },
     {
-      title: "Courier Management System",
+      title: "EMPOWERING",
       desc: "Automated logistics platform for tracking shipments, managing riders, and optimizing delivery routes.",
       tech: ["React", "Node.js", "Express"],
-      link: "#",
+      link: "https://empowerings.vercel.app/",
       image: "hero.png"
     },
     {
-      title: "Inventory Control system",
+      title: "APEX BATTLE ARENA",
       desc: "Advanced stock management solution with real-time alerts, reporting, and supplier integration.",
       tech: ["PHP", "MySQL", "jQuery"],
-      link: "#",
-      image: "hero.png"
-    },
-    {
-      title: "E-commerce Management System",
-      desc: "Robust online store platform with product management, orders, and secure checkout.",
-      tech: ["PHP", "MySQL", "JavaScript"],
-      link: "#",
+      link: "https://apexbattlearena.com/",
       image: "hero.png"
     },
   ];
@@ -276,7 +262,7 @@ export default function Portfolio() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-400 uppercase font-bold tracking-widest leading-none mb-1">Experience</div>
-                    <div className="text-xl font-bold font-outfit leading-none">6 Months</div>
+                    <div className="text-xl font-bold font-outfit leading-none">1 year 5 month</div>
                   </div>
                 </div>
               </motion.div>
@@ -320,11 +306,11 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {skills.map((s, idx) => (
               <motion.div
                 key={s.name}
-                className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden"
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] group p-8 rounded-3xl bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300 relative overflow-hidden"
                 whileHover={{ y: -5 }}
               >
                 <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${s.color} opacity-[0.03] rounded-full blur-2xl group-hover:opacity-[0.08] transition-opacity`} />
@@ -359,7 +345,7 @@ export default function Portfolio() {
             <h3 className="text-3xl md:text-5xl font-bold font-outfit">Featured Projects.</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {projects.map((p) => (
               <div
                 key={p.title}
@@ -377,6 +363,19 @@ export default function Portfolio() {
                     </span>
                   ))}
                 </div>
+                {p.link && p.link !== "#" && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative z-10 mt-6 inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-indigo-500/10 text-indigo-400 font-bold tracking-widest text-xs uppercase hover:bg-indigo-500/20 hover:text-indigo-300 hover:-translate-y-1 transition-all duration-300 border border-indigo-500/20 hover:border-indigo-500/40 hover:shadow-[0_0_15px_rgba(99,102,241,0.2)]"
+                  >
+                    Live Preview
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
               </div>
             ))}
           </div>
